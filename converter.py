@@ -1,14 +1,30 @@
-def binary(decimal):
-    x = decimal
+def binary(integer):
+    dec = integer
     bin = ''
-    while x != 0:
-        if x % 2 == 0:
+    while dec != 0:
+        if dec % 2 == 0:
             bin = '0'+bin
         else:
             bin = '1'+bin
-        x = x//2
+        dec //= 2
     return bin
 
+def decimalConvert(decimal):
+    dec = decimal
+    bin = ''
+    while dec != 1:
+        dec *= 2
+        if dec >= 1:
+            dec -= 1
+            bin += '1'
+        else:
+            bin += '0'
+        if len(bin) == 24:
+            break
+    return bin
 
-test = binary(1)
-print(test)
+"""test = binary(int(input("Enter number: ")))
+test = test
+print(test)"""
+
+print(decimalConvert(.09375))
