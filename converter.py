@@ -57,8 +57,10 @@ def addPadding(bin,index):
     return bin
 
 def IEEE32(integer):
+    binary = '0'
     if integer == 0:
-        return '00000000000000000000000000000000'
+        binary = addPadding(binary,32)
+        return binary
 
     sign = signCheck(integer)
     if integer < 0: integer *= -1
@@ -90,4 +92,4 @@ def IEEE32(integer):
 test = test
 print(test)"""
 
-print(IEEE32(-0.05))
+print(IEEE32(0))
