@@ -43,10 +43,6 @@ def findExpo(whole,decimal):
                 break
         return count*-1
     return len(whole)-1
-    
-
-            
-
 
 def expoToBinary(exponent,offset):
     tempExpo = exponent + offset
@@ -55,26 +51,43 @@ def expoToBinary(exponent,offset):
         bin = '0'+bin
     return bin
 
-def IEE32(integer):
+def addPadding(bin,index):
+    while len(bin) != index:
+        bin += '0'
+    return bin
+
+def IEEE32(integer):
+    if integer == 0:
+        return '00000000000000000000000000000000'
+
     sign = signCheck(integer)
     if integer < 0: integer *= -1
 
     wholeInt = int(integer)
     decInt = integer - wholeInt
 
-    wholeInt = binaryConvert(wholeInt)
-    decInt = decimalConvert(decInt)
+    wholeBin = binaryConvert(wholeInt)
+    decBin = decimalConvert(decInt)
 
-    expo = findExpo(wholeInt,decInt)
+    expo = findExpo(wholeBin,decBin)
     expoBin = expoToBinary(expo,127)
-    
-    binary = wholeInt + decInt
 
-    return expoBin
+    if wholeBin == '0':   
+        decBin = decBin[(expo*-1):]
+        binary = sign + expoBin + decBin
+        binary = binary[:32]
+        binary = addPadding(binary,32)
+    else:
+        wholeBin = wholeBin[1:]
+        binary = sign + expoBin + wholeBin + decBin
+        binary = binary[:32]
+        binary = addPadding(binary,32)
+
+    return binary
     
 
 """test = binaryConvert(int(input("Enter number: ")))
 test = test
 print(test)"""
 
-print(findExpo('0','001'))
+print(IEEE32(-0.05))
