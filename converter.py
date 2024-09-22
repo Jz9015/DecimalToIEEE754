@@ -1,5 +1,3 @@
-import math
-
 def binaryConvert(integer):
     if integer == 0 : return '0'
     dec = integer
@@ -111,4 +109,4 @@ def IEEE754(integer,size):
 
     return binary
 
-print(IEEE754(int(input("Enter #: ")),int(input("Enter Bit Size: "))))
+print(IEEE754(float(input("Enter #: ")),int(input("Enter Bit Size: "))))
