@@ -1,18 +1,23 @@
-<h1>IEEE 743 To Decimal</h1>
+ <html>
+ <h1>IEEE 743 To Decimal</h1>
 
-<div>
-    <label for="userNum">Select a # to Convert:</label>
-    <input type="text" id="userNum" name="userNum"><br>
-</div>
+    <form method="POST">
+        <label for="userNum">Select a # to Convert:</label>
+        <input type="text" id="userNum" name="userNum"><br>
 
-<div>
-    <label for="bitSize">Choose a Bit Size:</label>
-    <select name="bitSize" id="bitSize">
-        <option value="16">Half</option>
-        <option value="32">Single</option>
-        <option value="64">Double</option>
-        <option value="128">Quadruple</option>
-        <option value="256">Octuple</option>
-    </select>
-    <input type="submit" value="Submit">
-</div>
+
+
+        <label for="bitSize">Choose a Bit Size:</label>
+        <select name="bitSize" id="bitSize">
+            <option value="16">Half</option>
+            <option value="32">Single</option>
+            <option value="64">Double</option>
+            <option value="128">Quadruple</option>
+            <option value="256">Octuple</option>
+        </select>
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <label for="binResult">{{num}} =</label>
+    <input type="text" id="binResult" name="binResult" value="{{out}}" size="32" disabled><br>
+ </html>
