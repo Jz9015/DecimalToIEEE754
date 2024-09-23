@@ -11,8 +11,8 @@ def my_Form():
 def my_form_post():
     userNum = request.form['userNum']
     bitSize = request.form['bitSize']
-    if userNum == '':
-        userNum = 0
+    if converter.testFloat(userNum) == False:
+        userNum = '0'
     output = converter.IEEE754(float(userNum),int(bitSize))
     return render_template('main.html', out=output, num=userNum)
 

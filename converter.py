@@ -78,6 +78,13 @@ def addPadding(bin,index):
         bin += '0'
     return bin
 
+def testFloat(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
 def IEEE754(integer,size):
     binary = '0'
     if integer == 0:
