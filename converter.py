@@ -1,7 +1,3 @@
-from flask import Flask, request, redirect, url_for, render_template
-
-app = Flask(__name__)
-
 def binaryConvert(integer):
     if integer == 0 : return '0'
     dec = integer
@@ -112,20 +108,3 @@ def IEEE754(integer,size):
         binary = addPadding(binary,size)
 
     return binary
-
-@app.route('/') 
-def my_Form():
-    return render_template('main.html')
-
-@app.route('/', methods=['POST'])
-def my_form_post():
-    userNum = request.form['userNum']
-    bitSize = request.form['bitSize']
-    if userNum == '':
-        userNum = 0
-    output = IEEE754(float(userNum),int(bitSize))
-    return render_template('main.html',out=output)
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run(host="0.0.0.0", port=5000)
